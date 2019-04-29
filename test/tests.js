@@ -13,7 +13,6 @@ test('Test form data input', assert => {
         transport: ['MAX', 'flight']
     };
     const formData = new FormData();
-    console.log('test ', formData);
     formData.set('name', expected.name);
     formData.set('power-description', expected.superpower);
     formData.set('wear-cape', 'no');
@@ -24,7 +23,6 @@ test('Test form data input', assert => {
     //Act 
     // Call the function you're testing and set the result to a const
     const result = getApplication(formData);
-    console.log(result);
     //Assert
     assert.deepEqual(result, expected);
 });
