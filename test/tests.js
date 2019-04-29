@@ -14,7 +14,7 @@ test('time to test a function', function(assert) {
     };
     const formData = new FormData();
     formData.set('name', expected.name);
-    formData.set('power', expected.superpower);
+    formData.set('power-description', expected.superpower);
     formData.set('wear-cape', 'no');
     formData.set('area-to-save', expected.areaToSave);
     formData.set('power-level', '3');
