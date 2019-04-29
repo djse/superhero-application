@@ -1,7 +1,7 @@
 import getApplication from '../src/get-applicant.js';
 const test = QUnit.test;
 
-test('Test form data input', function(assert) {
+test('Test form data input', assert => {
     //Arrange
     // Set up your parameters and expectations
     const expected = {
