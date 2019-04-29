@@ -12,26 +12,26 @@
     <form id="superhero-application">
         <p>
             <label for="name">Name: </label>
-            <input id="name" name="name">
+            <input id="name" name="name" required>
         </p>
         <p>
             <label for="power">Describe your superpower?</label>
-            <textarea id="power" name="power"></textarea>
+            <textarea id="power" name="power" required></textarea>
         </p>
         <fieldset>
             <legend>
                 Do you wear a cape?
             </legend>
-            <input id="cape" type="radio" value="yes" name="wear-cape">
+            <input id="cape" type="radio" value="yes" name="wear-cape" required>
             <label for="cape">Cape</label>
-            <input id="no-cape" type="radio" value="no" name="wear-cape">
+            <input id="no-cape" type="radio" value="no" name="wear-cape" required>
             <label for="no-cape">No Cape</label>
         </fieldset>
         <section>
             <label for="area-to-save">
                 Preferred PDX area to save
             </label> 
-            <select>
+            <select id="area-to-save" name="area-to-save" required>
                 <option value="" hidden disabled selected>Select an area</option>
                 <option>SE Portland</option>
                 <option>SW Portland</option>
@@ -41,7 +41,7 @@
         </section>
         <section>
             <label for="power-level">What's your power level?</label>
-            <input type="range" name="power-level" id="power-level" min="1" max="10">
+            <input type="range" name="power-level" id="power-level" min="1" max="10" required>
         </section>
         <section>
             <fieldset>
