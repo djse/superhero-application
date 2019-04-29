@@ -8,7 +8,7 @@ function getApplication(formData) {
         wearCape: cape,
         areaToSave: formData.get('area-to-save'),
         powerLevel: powerLvl,
-        transportation: formData.getAll('transport'),
+        transport: formData.getAll('transport'),
     };
     return applicant;
 }
