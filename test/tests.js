@@ -26,3 +26,26 @@ test('Test form data input', assert => {
     //Assert
     assert.deepEqual(result, expected);
 });
+
+const applicantApi = {
+    save(applicant) {
+        const json = JSON.stringify(applicant);
+        localStorage.setItem('applicant', json);
+    },
+    get() {
+        const json = localStorage.getItem('applicant');
+        const applicant = JSON.parse(json);
+
+        return applicant;
+    }
+};
+
+test('round trip of super hero data', assert => {
+    //arrange
+    const applicant = { name: 'Jack' };
+    //act
+    applicantApi.save(applicant);
+    const result = applicantApi.get();
+    //assert
+    assert.deepEqual(result, applicant);
+});
