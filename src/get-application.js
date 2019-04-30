@@ -1,7 +1,6 @@
 function getApplication(formData) {
     const cape = formData.get('wear-cape') === 'yes';
     const powerLevel = parseInt(formData.get('power-level'));
-    
     const applicant = {
         name: formData.get('name'),
         superpower: formData.get('power-description'),

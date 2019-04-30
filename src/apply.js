@@ -6,6 +6,5 @@ form.addEventListener('submit', event => {
     event.preventDefault();
     const formData = new FormData(form);
     const applicant = getApplication(formData);
-    console.log(applicant);
     applicantApi.save(applicant);
 });
