@@ -3,8 +3,11 @@ import applicantApi from '../src/applicant-api.js';
 const test = QUnit.test;
 QUnit.module('applicant api');
 
+applicantApi.storage = sessionStorage;
+const testStorage = sessionStorage;
+
 test('round trip of super hero data', assert => {
-    localStorage.removeItem('applicants');
+    testStorage.removeItem('applicants');
     //arrange
     const applicant = { name: 'Jack' };
     //act
@@ -16,7 +19,7 @@ test('round trip of super hero data', assert => {
 
 test('return an empty array if there are no applicants', assert => {
     //arrange
-    localStorage.removeItem('applicants');
+    testStorage.removeItem('applicants');
     const expected = [];
     //act
     const applicants = applicantApi.getAll();
@@ -26,7 +29,7 @@ test('return an empty array if there are no applicants', assert => {
 
 test('Given two applicants getAll returns array of applicants', assert => {
     //arrange
-    localStorage.removeItem('applicants');
+    testStorage.removeItem('applicants');
     const applicant1 = { name: 'Danny' };
     const applicant2 = { name: 'Susan' };
     applicantApi.save(applicant1);
