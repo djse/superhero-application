@@ -13,3 +13,12 @@ h1, h2 {
     font-family: Bangers, "sans-serif";
     color: #C80000;
 }
+
+button {
+    padding: 5px;
+    margin: 10px;
+}
+
+button:hover {
+    box-shadow: 2.5px 2.5px 10px yellow;
+}

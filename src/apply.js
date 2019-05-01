@@ -7,4 +7,5 @@ form.addEventListener('submit', event => {
     const formData = new FormData(form);
     const applicant = getApplication(formData);
     applicantApi.save(applicant);
+    window.location = '../thank-you.html';
 });
