@@ -16,7 +16,12 @@ for(let i = 0; i < applicants.length; i++) {
     tr.appendChild(superpowerCell);
 
     const wearCapeCell = document.createElement('td');
-    wearCapeCell.textContent = applicant.wearCape;
+    if(applicant.wearCape) {
+        wearCapeCell.textContent = 'Yes';
+    } 
+    else {
+        wearCapeCell.textContent = 'No';
+    }
     tr.appendChild(wearCapeCell);
 
     const areaToSaveCell = document.createElement('td');
