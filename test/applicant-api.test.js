@@ -23,3 +23,17 @@ test('return an empty array if there are no applicants', assert => {
     //assert
     assert.deepEqual(applicants, expected);
 });
+
+test('Given two applicants getAll returns array of applicants', assert => {
+    //arrange
+    localStorage.removeItem('applicants');
+    const applicant1 = { name: 'Danny' };
+    const applicant2 = { name: 'Susan' };
+    applicantApi.save(applicant1);
+    applicantApi.save(applicant2);
+    const expected = [applicant1, applicant2];
+    //act
+    const applicants = applicantApi.getAll();
+    //assert
+    assert.deepEqual(applicants, expected);
+});
