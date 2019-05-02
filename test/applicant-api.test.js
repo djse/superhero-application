@@ -6,15 +6,17 @@ QUnit.module('applicant api');
 applicantApi.storage = sessionStorage;
 const testStorage = sessionStorage;
 
-test('round trip of super hero data', assert => {
+test('Store two applicants get the second one back', assert => {
     testStorage.removeItem('applicants');
     //arrange
-    const applicant = { name: 'Jack' };
+    const applicant1 = { name: 'applicant1' };
+    const applicant2 = { name: 'applicant2' };
     //act
-    applicantApi.save(applicant);
-    const result = applicantApi.get();
+    applicantApi.save(applicant1);
+    applicantApi.save(applicant2);
+    const result = applicantApi.get(applicant2.name);
     //assert
-    assert.deepEqual(result, applicant);
+    assert.deepEqual(result, applicant2);
 });
 
 test('return an empty array if there are no applicants', assert => {
