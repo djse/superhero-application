@@ -1,0 +1,19 @@
+body {
+    text-align: left;
+    background-color:  rgba(254, 233, 0, 0.5);
+}
+
+dl {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+}
+
+dt, dd {
+    display: inline-block;
+    padding: 10px;
+    margin: 2px;
+}
+
+dt {
+    background-color: #48A4D6;
+}
