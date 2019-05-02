@@ -7,8 +7,11 @@ const areaToSave = document.getElementById('area-to-save');
 const powerLevel = document.getElementById('power-level');
 const transport = document.getElementById('transport');
 
+const searchParams = new URLSearchParams(window.location.search);
+const applicantName = searchParams.get('name');
+
 // Get applicant info from local storage
-const applicant = applicantApi.get();
+const applicant = applicantApi.get(applicantName);
 
 // Check if applicant exists and go back to index.html if not
 if(!applicant) {
