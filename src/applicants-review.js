@@ -7,43 +7,57 @@ for(let i = 0; i < applicants.length; i++) {
     const applicant = applicants[i];
     const tr = document.createElement('tr');
     
-    const nameCell = document.createElement('td');
-    const link = document.createElement('a');
-    const searchParams = new URLSearchParams();
-    searchParams.set('name', applicant.name);
-    link.href = 'applicant-detail.html?' + searchParams.toString();
-    link.textContent = applicant.name;
-    nameCell.appendChild(link);
+    const nameCell = makeNameCell(applicant.name);
     tr.appendChild(nameCell);
 
-    const superpowerCell = document.createElement('td');
-    superpowerCell.textContent = applicant.superpower;
+    const superpowerCell = makeTextCell(applicant.superpower);
     tr.appendChild(superpowerCell);
 
-    const wearCapeCell = document.createElement('td');
-    if(applicant.wearCape) {
-        wearCapeCell.textContent = 'Yes';
-    } 
-    else {
-        wearCapeCell.textContent = 'No';
-    }
+    const wearCapeCell = makeTextCell(convertBoolean(applicant.wearCape));
+    
     tr.appendChild(wearCapeCell);
 
-    const areaToSaveCell = document.createElement('td');
-    areaToSaveCell.textContent = applicant.areaToSave;
+    const areaToSaveCell = makeTextCell(applicant.areaToSave);
     tr.appendChild(areaToSaveCell);
 
-    const powerLevelCell = document.createElement('td');
-    powerLevelCell.textContent = applicant.powerLevel;
+    const powerLevelCell = makeTextCell(applicant.powerLevel);
     tr.appendChild(powerLevelCell);
 
-    const transportCell = document.createElement('td');
-    let transportList = '';
-    if(applicant.transport) {
-        transportList = applicant.transport.join(', ');
-    }
-    transportCell.textContent = transportList;
+    const transportCell = makeListCell(applicant.transport);
     tr.appendChild(transportCell);
 
     tbody.appendChild(tr);
+}
+
+function makeNameCell(name) {
+    const nameCell = document.createElement('td');
+    const link = document.createElement('a');
+    const searchParams = new URLSearchParams();
+    searchParams.set('name', name);
+    link.href = 'applicant-detail.html?' + searchParams.toString();
+    link.textContent = name;
+    nameCell.appendChild(link);
+    return nameCell;
+}
+
+function convertBoolean(bool) {
+    if(bool) {
+        return 'Yes';
+    } 
+    return 'No';
+}
+
+function makeListCell(list) {
+    let stringFromList = '';
+    if(list) {
+        stringFromList = list.join(', ');
+    }
+    const listCell = makeTextCell(stringFromList);
+    return listCell;
+}
+
+function makeTextCell(text) {
+    const textCell = document.createElement('td');
+    textCell.textContent = text;
+    return textCell;
 }
