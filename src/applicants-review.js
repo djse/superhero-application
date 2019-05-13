@@ -1,4 +1,5 @@
 import applicantApi from './applicant-api.js';
+import makeApplicantRow from './make-applicant-row.js';
 
 const tbody = document.getElementById('applicants');
 const applicants = applicantApi.getAll();
@@ -7,38 +8,19 @@ for(let i = 0; i < applicants.length; i++) {
     const applicant = applicants[i];
     const tr = document.createElement('tr');
     
-    const nameCell = document.createElement('td');
-    nameCell.textContent = applicant.name;
+    const nameCell = makeApplicantRow.makeNameCell(applicant.name);
+    const superpowerCell = makeApplicantRow.makeTextCell(applicant.superpower);
+    const wearCapeCell = makeApplicantRow.makeTextCell(makeApplicantRow.convertBoolean(applicant.wearCape));
+    const areaToSaveCell = makeApplicantRow.makeTextCell(applicant.areaToSave);
+    const powerLevelCell = makeApplicantRow.makeTextCell(applicant.powerLevel);
+    const transportCell = makeApplicantRow.makeListCell(applicant.transport);
+    
     tr.appendChild(nameCell);
-
-    const superpowerCell = document.createElement('td');
-    superpowerCell.textContent = applicant.superpower;
     tr.appendChild(superpowerCell);
-
-    const wearCapeCell = document.createElement('td');
-    if(applicant.wearCape) {
-        wearCapeCell.textContent = 'Yes';
-    } 
-    else {
-        wearCapeCell.textContent = 'No';
-    }
     tr.appendChild(wearCapeCell);
-
-    const areaToSaveCell = document.createElement('td');
-    areaToSaveCell.textContent = applicant.areaToSave;
     tr.appendChild(areaToSaveCell);
-
-    const powerLevelCell = document.createElement('td');
-    powerLevelCell.textContent = applicant.powerLevel;
     tr.appendChild(powerLevelCell);
-
-    const transportCell = document.createElement('td');
-    let transportList = '';
-    if(applicant.transport) {
-        transportList = applicant.transport.join(', ');
-    }
-    transportCell.textContent = transportList;
     tr.appendChild(transportCell);
-
+    
     tbody.appendChild(tr);
 }

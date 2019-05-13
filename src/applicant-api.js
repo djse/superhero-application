@@ -1,19 +1,23 @@
 const applicantApi = {
-    storage: localStorage,
+    key: 'applicants',
     save(applicant) {
         const applicants = applicantApi.getAll();
         applicants.push(applicant);
         const json = JSON.stringify(applicants);
-        applicantApi.storage.setItem('applicants', json);
+        localStorage.setItem(applicantApi.key, json);
     },
-    get() {
-        const json = applicantApi.storage.getItem('applicants');
-        const applicants = JSON.parse(json);
+    get(name) {
+        const applicants = applicantApi.getAll();
 
-        return applicants[0];
+        for(let i = 0; i < applicants.length; i++) {
+            const applicant = applicants[i];
+            if(applicant.name === name) {
+                return applicant;
+            }
+        }
     },
     getAll() {
-        const json = applicantApi.storage.getItem('applicants');
+        const json = localStorage.getItem(applicantApi.key);
         
         let applicants = JSON.parse(json);
         if(!applicants) {
